@@ -31,6 +31,7 @@ def start_game():
                 attempts += 1
             else:
                 print("You guessed it right. It took you {} attempt/s to guess it correctly! Great job!".format(attempts))
+                print("Your score is ",attempts)
                 def re_play():
                     global high_score
                     choice = input("Do you want to play again? Yes/No ") 
