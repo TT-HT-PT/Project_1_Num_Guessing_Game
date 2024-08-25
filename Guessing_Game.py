@@ -4,14 +4,15 @@ import random
 # Import the random function from the random module
 
 print("Welcome to 'Guess the right number' ")
-attempts = 1
-first_play = 0
-print("Current high score is",first_play)
+
+high_score = 10
+print("Current high score is",high_score)
 # Run the following code when the user input is not the same as the random number 
 def start_game():
+    attempts = 1
     user_num = 0
     rand_num = random.randrange(1,10)
-    global attempts
+    global high_score
     while user_num is not rand_num:
         # Check for the exceptions in the user input
         try:
@@ -30,10 +31,12 @@ def start_game():
                 attempts += 1
             else:
                 print("You guessed it right. It took you {} attempt/s to guess it correctly! Great job!".format(attempts))
-                high_score = attempts       
                 def re_play():
+                    global high_score
                     choice = input("Do you want to play again? Yes/No ") 
                     if choice.lower() == "yes":
+                        if attempts < high_score:
+                            high_score = attempts
                         print("Current High Score is",high_score)
                         start_game()
                     elif choice.lower() == "no": 
